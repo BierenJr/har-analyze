@@ -63,6 +63,12 @@ irm https://astral.sh/uv/install.ps1 | iex
 git clone <repository-url>
 cd har-analyze
 
+# Install uv python
+uv python install 3.14
+
+# Create uv vitrual environment
+uv venv 
+
 # Install dependencies
 uv sync
 ```
