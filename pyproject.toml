@@ -1,0 +1,53 @@
+[project]
+name = "har-analyze"
+version = "0.1.0"
+description = "HAR file analyzer with deterministic performance insights"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "pydantic>=2.5.0",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+]
+
+[project.scripts]
+har-analyze = "har_analyze:main"
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "basedpyright>=1.8.0",
+]
+
+# Ruff configuration
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PERF", "PTH", "PL", "PIE", "RUF", "Q", "D"]
+ignore = [
+    "D100",  # Missing module docstring
+    "D104",  # Missing package docstring
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+# Basedpyright configuration
+[tool.basedpyright]
+typeCheckingMode = "strict"
+reportUnknownParameterType = "error"
+reportUnknownMemberType = "error"
+reportUnknownVariableType = "error"
+reportMissingTypeArgument = "error"
+reportUnnecessaryTypeIgnoreComment = "error"
+pythonVersion = "3.11"
+pythonPlatform = "All"
+include = ["src"]
+exclude = ["**/__pycache__", "**/.venv"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
